@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>SSE Roadmap | Prince Prajapati · FinTech Mastery</title>
+<!-- Google Fonts + Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+    body {
+
+      background: radial-gradient(circle at 10% 30%, #f8faff, #eef2fc);
+
+      font-family: 'Inter', sans-serif;
+
+      color: #1a2c3e;
+
+      line-height: 1.4;
+
+      scroll-behavior: smooth;
+
+    }
+
+    .container {
+
+      max-width: 1400px;
+
+      margin: 0 auto;
+
+      padding: 2rem 1.8rem;
+
+    }
+
+    /* ========= MODERN HEADER ========= */
+
+    .hero {
+
+      background: linear-gradient(125deg, #0B2B4B 0%, #0F3B5C 50%, #0F2C44 100%);
+
+      border-radius: 2.5rem;
+
+      padding: 2.5rem 2rem;
+
+      margin-bottom: 2rem;
+
+      position: relative;
+
+      overflow: hidden;
+
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+
+    }
+
+    .hero::after {
+
+      content: "⚡";
+
+      font-size: 12rem;
+
+      opacity: 0.08;
+
+      position: absolute;
+
+      bottom: -35px;
+
+      right: -20px;
+
+      pointer-events: none;
+
+    }
+
+    .hero-content {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 1.5rem;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+    .hero-text h1 {
+
+      font-size: 2.8rem;
+
+      font-weight: 700;
+
+      letter-spacing: -0.02em;
+
+      background: linear-gradient(130deg, #FFFFFF, #B9E0FF);
+
+      background-clip: text;
+
+      -webkit-background-clip: text;
+
+      color: transparent;
+
+      margin-bottom: 0.3rem;
+
+    }
+
+    .hero-tag {
+
+      color: #cfebff;
+
+      font-weight: 500;
+
+      display: flex;
+
+      gap: 1rem;
+
+      flex-wrap: wrap;
+
+      margin-top: 0.5rem;
+
+    }
+
+    .hero-badge {
+
+      background: rgba(255,255,240,0.12);
+
+      backdrop-filter: blur(6px);
+
+      border-radius: 100px;
+
+      padding: 0.3rem 1rem;
+
+      font-size: 0.85rem;
+
+    }
+
+    .stat-blocks {
+
+      display: flex;
+
+      gap: 1.2rem;
+
+      flex-wrap: wrap;
+
+    }
+
+    .stat-card {
+
+      background: rgba(255,255,255,0.1);
+
+      backdrop-filter: blur(8px);
+
+      border-radius: 2rem;
+
+      padding: 0.8rem 1.6rem;
+
+      text-align: center;
+
+      font-weight: 600;
+
+      border: 1px solid rgba(255,255,255,0.2);
+
+    }
+
+    .stat-card i {
+
+      font-size: 1.4rem;
+
+      margin-right: 0.5rem;
+
+      vertical-align: middle;
+
+    }
+
+    /* ========= MODERN GRID CARDS ========= */
+
+    .insight-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+
+      gap: 1.4rem;
+
+      margin-bottom: 2.5rem;
+
+    }
+
+    .insight-card {
+
+      background: rgba(255,255,255,0.85);
+
+      backdrop-filter: blur(4px);
+
+      border-radius: 1.8rem;
+
+      padding: 1.4rem;
+
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.07);
+
+      transition: all 0.25s ease;
+
+      border: 1px solid rgba(255,255,255,0.7);
+
+    }
+
+    .insight-card:hover {
+
+      transform: translateY(-6px);
+
+      background: white;
+
+      box-shadow: 0 20px 32px -12px rgba(0,70,120,0.18);
+
+    }
+
+    .insight-card i {
+
+      font-size: 2rem;
+
+      color: #136b9c;
+
+      margin-bottom: 0.6rem;
+
+    }
+
+    .progress-modern {
+
+      background: #e2e9f2;
+
+      border-radius: 40px;
+
+      height: 8px;
+
+      width: 100%;
+
+      margin-top: 12px;
+
+      overflow: hidden;
+
+    }
+
+    .progress-fill {
+
+      background: linear-gradient(90deg, #1d7eb5, #3ca0e0);
+
+      border-radius: 40px;
+
+      height: 100%;
+
+      width: 0%;
+
+      transition: width 0.4s;
+
+    }
+
+    /* Sections */
+
+    .section-title {
+
+      font-size: 1.8rem;
+
+      font-weight: 700;
+
+      margin: 2rem 0 1rem 0;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 0.8rem;
+
+    }
+
+    .section-title i {
+
+      background: #136b9c20;
+
+      padding: 0.5rem;
+
+      border-radius: 1rem;
+
+      color: #136b9c;
+
+    }
+
+    .skills-capsule {
+
+      background: white;
+
+      border-radius: 2rem;
+
+      padding: 1.6rem;
+
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+
+      margin-bottom: 1.2rem;
+
+      transition: all 0.2s;
+
+      border: 1px solid rgba(0,0,0,0.03);
+
+    }
+
+    .badge-group {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 0.7rem;
+
+      margin-top: 0.6rem;
+
+    }
+
+    .skill-badge {
+
+      padding: 0.5rem 1.2rem;
+
+      border-radius: 60px;
+
+      font-size: 0.8rem;
+
+      font-weight: 600;
+
+      background: #f0f4fa;
+
+      color: #1f6390;
+
+      transition: all 0.2s;
+
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+
+    }
+
+    .skill-badge i {
+
+      margin-right: 6px;
+
+      font-size: 0.75rem;
+
+    }
+
+    .skill-badge:hover {
+
+      transform: scale(1.02);
+
+      background: #e6f0ff;
+
+    }
+
+    /* quadrant for 2-column deep dive */
+
+    .two-columns {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 1.5rem;
+
+      margin: 1.5rem 0;
+
+    }
+
+    .deep-card {
+
+      background: white;
+
+      border-radius: 1.6rem;
+
+      padding: 1.4rem;
+
+      box-shadow: 0 12px 20px -12px rgba(0,0,0,0.05);
+
+    }
+
+    .topic-stack {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 0.6rem;
+
+      margin-top: 0.8rem;
+
+    }
+
+    .level {
+
+      font-size: 0.7rem;
+
+      font-weight: 500;
+
+      background: #eef3fc;
+
+      border-radius: 20px;
+
+      padding: 0.2rem 0.7rem;
+
+    }
+
+    /* weekly timeline interactive */
+
+    .weekly-modern {
+
+      background: white;
+
+      border-radius: 2rem;
+
+      padding: 1.6rem;
+
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+
+    }
+
+    .week-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+
+      gap: 1rem;
+
+      margin-top: 1rem;
+
+    }
+
+    .week-day {
+
+      background: #f9fcff;
+
+      border-radius: 1.5rem;
+
+      padding: 1rem 0.5rem;
+
+      text-align: center;
+
+      transition: 0.2s;
+
+      border: 1px solid #eef2f8;
+
+    }
+
+    .week-day i {
+
+      font-size: 1.5rem;
+
+      display: block;
+
+      margin-bottom: 0.5rem;
+
+      color: #2a7faa;
+
+    }
+
+    .week-day strong {
+
+      display: block;
+
+      font-size: 1rem;
+
+    }
+
+    .week-day span {
+
+      font-size: 0.7rem;
+
+      color: #5d6f83;
+
+    }
+
+    .week-day:hover {
+
+      background: #e2f0ff;
+
+      transform: translateY(-5px);
+
+    }
+
+    /* milestone road */
+
+    .milestone-track {
+
+      background: linear-gradient(115deg, #fff, #f5faff);
+
+      border-radius: 1.8rem;
+
+      padding: 1.5rem;
+
+      margin-top: 1rem;
+
+    }
+
+    .timeline-progress {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      flex-wrap: wrap;
+
+    }
+
+    .milestone {
+
+      text-align: center;
+
+      flex: 1;
+
+      min-width: 80px;
+
+      position: relative;
+
+    }
+
+    .milestone .dot {
+
+      width: 12px;
+
+      height: 12px;
+
+      background: #2d89c4;
+
+      border-radius: 20px;
+
+      margin: 0 auto 8px;
+
+    }
+
+    hr {
+
+      margin: 1rem 0;
+
+      border: none;
+
+      height: 1px;
+
+      background: linear-gradient(90deg, transparent, #bcd0e6, transparent);
+
+    }
+
+    footer {
+
+      margin-top: 3rem;
+
+      text-align: center;
+
+      font-size: 0.8rem;
+
+      color: #4a627a;
+
+    }
+
+    @media (max-width: 700px) {
+
+      .two-columns { grid-template-columns: 1fr; }
+
+      .hero-text h1 { font-size: 1.8rem; }
+
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<!-- Hero modern -->
+<div class="hero">
+<div class="hero-content">
+<div class="hero-text">
+<h1>SSE Roadmap · Master FinTech</h1>
+<div class="hero-tag">
+<span><i class="fas fa-building"></i> Mastercard · Visa · BofA · JPMorgan</span>
+<span class="hero-badge"><i class="fas fa-user-graduate"></i> Prince Prajapati · .NET / C#</span>
+<span class="hero-badge"><i class="fas fa-clock"></i> 20 hrs/week · 10 months</span>
+</div>
+</div>
+<div class="stat-blocks">
+<div class="stat-card"><i class="fas fa-chart-line"></i> Target L5/L6</div>
+<div class="stat-card"><i class="fas fa-rocket"></i> Oct 2026</div>
+</div>
+</div>
+</div>
+<!-- Insight cards with progress -->
+<div class="insight-grid">
+<div class="insight-card"><i class="fas fa-code"></i> <strong>DSA Proficiency</strong>
+<div class="progress-modern"><div class="progress-fill" style="width: 40%"></div></div>
+<span style="font-size:0.75rem;">40% · 200+ problems target</span>
+</div>
+<div class="insight-card"><i class="fas fa-cloud-upload-alt"></i> <strong>System Design</strong>
+<div class="progress-modern"><div class="progress-fill" style="width: 25%"></div></div>
+<span style="font-size:0.75rem;">HLD / LLD · Trade-offs</span>
+</div>
+<div class="insight-card"><i class="fab fa-aws"></i> <strong>AWS & Cloud</strong>
+<div class="progress-modern"><div class="progress-fill" style="width: 20%"></div></div>
+<span style="font-size:0.75rem;">ECS, RDS, Lambda</span>
+</div>
+<div class="insight-card"><i class="fas fa-stream"></i> <strong>Kafka</strong>
+<div class="progress-modern"><div class="progress-fill" style="width: 22%"></div></div>
+<span style="font-size:0.75rem;">Event-driven architecture</span>
+</div>
+<div class="insight-card"><i class="fab fa-docker"></i> <strong>Docker/K8s</strong>
+<div class="progress-modern"><div class="progress-fill" style="width: 18%"></div></div>
+<span style="font-size:0.75rem;">Container orchestration</span>
+</div>
+<div class="insight-card"><i class="fas fa-credit-card"></i> <strong>Payments Domain</strong>
+<div class="progress-modern"><div class="progress-fill" style="width: 32%"></div></div>
+<span style="font-size:0.75rem;">ISO8583, PCI, settlement</span>
+</div>
+</div>
+<!-- Two columns: DSA + System Design (modern deep dive) -->
+<div class="two-columns">
+<div class="deep-card">
+<div style="display: flex; justify-content: space-between;"><h3><i class="fas fa-brain"></i> Data Structures & Algorithms</h3><span class="level">LeetCode · CodeSignal</span></div>
+<div class="topic-stack">
+<span class="skill-badge"><i class="fas fa-chart-simple"></i> Arrays & Hashing</span>
+<span class="skill-badge"><i class="fas fa-font"></i> Two Pointers</span>
+<span class="skill-badge"><i class="fas fa-tree"></i> Binary Trees (DFS/BFS)</span>
+<span class="skill-badge"><i class="fas fa-project-diagram"></i> Graph (Dijkstra/Topo)</span>
+<span class="skill-badge"><i class="fas fa-cubes"></i> Dynamic Programming</span>
+<span class="skill-badge"><i class="fas fa-sort-alpha-down"></i> Heap / Priority Q</span>
+</div>
+<div class="progress-modern mt-2" style="margin-top:12px"><div class="progress-fill" style="width: 40%"></div></div>
+<div style="font-size:0.7rem; margin-top:8px;">✅ 80/200 solved · pattern mastery · Mock interviews bi-weekly</div>
+</div>
+<div class="deep-card">
+<h3><i class="fas fa-server"></i> System Design (HLD + LLD)</h3>
+<div class="topic-stack">
+<span class="skill-badge"><i class="fas fa-scale-balanced"></i> Load Balancing</span>
+<span class="skill-badge"><i class="fas fa-database"></i> Database Sharding</span>
+<span class="skill-badge"><i class="fas fa-memory"></i> Caching (Redis)</span>
+<span class="skill-badge"><i class="fas fa-globe"></i> CDN & Edge</span>
+<span class="skill-badge"><i class="fas fa-chart-line"></i> Consistent Hashing</span>
+<span class="skill-badge"><i class="fas fa-exchange-alt"></i> CAP Theorem</span>
+</div>
+<div class="progress-modern mt-2" style="margin-top:12px"><div class="progress-fill" style="width: 25%"></div></div>
+<div style="font-size:0.7rem;">📘 Designing Data-Intensive Apps · Grokking SD · FinTech case studies</div>
+</div>
+</div>
+<!-- Modern Cloud + DevOps expanded -->
+<div class="skills-capsule">
+<h3><i class="fab fa-kubernetes"></i> Cloud & DevOps (multi-cloud ready)</h3>
+<div class="badge-group">
+<span class="skill-badge"><i class="fab fa-docker"></i> Docker Compose</span>
+<span class="skill-badge"><i class="fas fa-cubes"></i> Kubernetes (EKS/AKS)</span>
+<span class="skill-badge"><i class="fab fa-aws"></i> AWS: VPC, S3, IAM</span>
+<span class="skill-badge"><i class="fas fa-code-branch"></i> CI/CD: GitHub Actions</span>
+<span class="skill-badge"><i class="fas fa-infinity"></i> Terraform (IaC)</span>
+<span class="skill-badge"><i class="fas fa-chart-line"></i> Prometheus/Grafana</span>
+</div>
+<div class="progress-modern mt-2"><div class="progress-fill" style="width: 22%"></div></div>
+</div>
+<!-- Kafka + Event Streaming + Payments Section -->
+<div class="two-columns">
+<div class="deep-card">
+<h3><i class="fas fa-bullhorn"></i> Apache Kafka · Event Streaming</h3>
+<div class="topic-stack">
+<span class="skill-badge">Producers/Consumers</span>
+<span class="skill-badge">Topics & Partitions</span>
+<span class="skill-badge">Kafka Streams</span>
+<span class="skill-badge">Exactly-once semantics</span>
+<span class="skill-badge">Schema Registry</span>
+<span class="skill-badge">Debezium CDC</span>
+</div>
+<div class="progress-modern mt-2"><div class="progress-fill" style="width: 22%"></div></div>
+<div style="font-size:0.7rem; margin-top: 5px;">🔁 Real-time fraud detection, payment reconciliation</div>
+</div>
+<div class="deep-card">
+<h3><i class="fas fa-university"></i> FinTech & Payment Systems</h3>
+<div class="topic-stack">
+<span class="skill-badge">ISO 8583</span>
+<span class="skill-badge">PCI DSS basics</span>
+<span class="skill-badge">3D Secure 2.0</span>
+<span class="skill-badge">Authorization/Settlement</span>
+<span class="skill-badge">ACH vs Wire</span>
+<span class="skill-badge">Open Banking (PSD2)</span>
+</div>
+<div class="progress-modern mt-2"><div class="progress-fill" style="width: 32%"></div></div>
+<div style="font-size:0.7rem;">💳 Mastercard/Visa simulation projects: payment gateway simulator</div>
+</div>
+</div>
+<!-- Fullstack / .NET C# specifics -->
+<div class="skills-capsule">
+<h3><i class="fab fa-microsoft"></i> .NET / C# Mastery – Enterprise Ready</h3>
+<div class="badge-group">
+<span class="skill-badge">ASP.NET Core Minimal API</span>
+<span class="skill-badge">Entity Framework Core</span>
+<span class="skill-badge">gRPC / RESTful</span>
+<span class="skill-badge">MediatR & CQRS</span>
+<span class="skill-badge">xUnit & Moq</span>
+<span class="skill-badge">Azure Service Bus</span>
+<span class="skill-badge">Polly Resilience</span>
+</div>
+<div class="progress-modern mt-2"><div class="progress-fill" style="width: 55%"></div></div>
+<div class="badge-group" style="margin-top: 0.5rem;"><i class="fas fa-tachometer-alt"></i> Current focus: High-performance APIs, YARP gateway, OpenTelemetry</div>
+</div>
+<!-- Weekly 20h STRATEGY + Modern tracker -->
+<div class="weekly-modern">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<h3><i class="far fa-calendar-alt"></i> 20h/week · hyper learning plan</h3>
+<span style="background:#eef3fc; padding: 4px 12px; border-radius: 30px;">🔁 sprints every 2 weeks</span>
+</div>
+<div class="week-grid">
+<div class="week-day"><i class="fas fa-chart-line"></i><strong>Mon</strong><span>DSA · Arrays & Hashing<br>2h</span></div>
+<div class="week-day"><i class="fas fa-chart-simple"></i><strong>Tue</strong><span>DSA · Trees/Graphs<br>2h</span></div>
+<div class="week-day"><i class="fas fa-microchip"></i><strong>Wed</strong><span>System Design (HLD)<br>2h + Kafka</span></div>
+<div class="week-day"><i class="fas fa-cloud"></i><strong>Thu</strong><span>Cloud/DevOps<br>Docker + AWS lab</span></div>
+<div class="week-day"><i class="fas fa-sync-alt"></i><strong>Fri</strong><span>Revision & Mock<br>Interview prep</span></div>
+<div class="week-day"><i class="fas fa-laptop-code"></i><strong>Sat</strong><span>Project: Payment<br>Simulator (C#)</span></div>
+<div class="week-day"><i class="fas fa-book-open"></i><strong>Sun</strong><span>Deep Study (Papers)<br>FinTech architecture</span></div>
+</div>
+<hr>
+<div style="display: flex; justify-content: space-between; flex-wrap:wrap; gap:0.5rem;">
+<div><i class="fas fa-check-circle" style="color:#2a9d8f;"></i> Weekly DSA: 6h  |  <i class="fas fa-laptop"></i> Project: 5h</div>
+<div><i class="fas fa-chalkboard-user"></i> System Design: 4h  |  Cloud/Kafka: 3h</div>
+<div><i class="fas fa-tasks"></i> Current Streak: Week 8/40</div>
+</div>
+</div>
+<!-- Milestone timeline (10 months roadmap) -->
+<div class="milestone-track">
+<h3><i class="fas fa-road"></i> 10-Month Roadmap · Key milestones to SSE interview ready</h3>
+<div class="timeline-progress">
+<div class="milestone"><div class="dot"></div><strong>Month 1-2</strong><span style="font-size:0.7rem;"> DSA core + .NET deep dive</span></div>
+<div class="milestone"><div class="dot"></div><strong>Month 3-4</strong><span style="font-size:0.7rem;"> System Design fundamentals, Kafka intro</span></div>
+<div class="milestone"><div class="dot"></div><strong>Month 5-6</strong><span style="font-size:0.7rem;"> Cloud (AWS/AKS) + Payment domain projects</span></div>
+<div class="milestone"><div class="dot"></div><strong>Month 7-8</strong><span style="font-size:0.7rem;"> Mock interviews / real payment gateway MVP</span></div>
+<div class="milestone"><div class="dot"></div><strong>Month 9-10</strong><span style="font-size:0.7rem;"> Target companies loop + portfolio polish</span></div>
+</div>
+<div class="progress-modern" style="margin-top: 20px;"><div class="progress-fill" style="width: 20%; background: linear-gradient(90deg,#1f8cad,#55c1e0);"></div></div>
+<div style="text-align: right; margin-top: 0.4rem; font-size:0.7rem;">⏳ overall readiness: 20% · on track for Mastercard/Visa/BofA loops</div>
+</div>
+<!-- extra recommended resources -->
+<div class="skills-capsule" style="margin-top: 1rem;">
+<h3><i class="fas fa-graduation-cap"></i> Curated resources for FinTech SSE</h3>
+<div class="badge-group">
+<span class="skill-badge"><i class="fab fa-youtube"></i> System Design Interview (Alex Xu)</span>
+<span class="skill-badge"><i class="fas fa-book"></i> Designing Event-Driven Systems</span>
+<span class="skill-badge"><i class="fab fa-leetcode"></i> LeetCode Premium (Top 150)</span>
+<span class="skill-badge"><i class="fab fa-aws"></i> AWS Certified Developer</span>
+<span class="skill-badge"><i class="fas fa-chalkboard"></i> Kafka: The Definitive Guide</span>
+</div>
+</div>
+<!-- connecting to interviews & community -->
+<div class="two-columns" style="margin-top: 0.5rem;">
+<div class="deep-card">
+<i class="fas fa-users" style="font-size: 1.2rem;"></i> <strong>Peer & mentor network</strong>
+<p style="font-size: 0.8rem; margin-top: 0.3rem;">Weekly 2 mock interviews · Join Pramp / Exponent · Peer review system design diagrams</p>
+</div>
+<div class="deep-card">
+<i class="fas fa-chart-simple"></i> <strong>Performance Dashboard</strong>
+<p style="font-size: 0.8rem;">LC contest rating ↗️ 1520 → 1750 (target) <br> AWS sandbox projects: 3 live services, 2 Kafka pipelines simulated.</p>
+</div>
+</div>
+<footer>
+<i class="fas fa-map-marked-alt"></i> SSE Roadmap · Prince Prajapati – .NET / C# · adaptive plan for top tier FinTech roles · Last updated April 2026
+</footer>
+</div>
+</body>
+</html>
+ 
